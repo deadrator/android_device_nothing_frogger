@@ -171,10 +171,7 @@ PRODUCT_PACKAGES += \
 
 # eUICC
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.telephony.euicc.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_JPN/android.hardware.telephony.euicc.xml \
-    frameworks/native/data/etc/android.hardware.telephony.euicc.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_ProEEA/android.hardware.telephony.euicc.xml \
-    frameworks/native/data/etc/android.hardware.telephony.euicc.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_ProROW/android.hardware.telephony.euicc.xml \
-    frameworks/native/data/etc/android.hardware.telephony.euicc.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_ProTUR/android.hardware.telephony.euicc.xml
+    frameworks/native/data/etc/android.hardware.telephony.euicc.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_JPN/android.hardware.telephony.euicc.xml
 
 PRODUCT_PACKAGES += \
     EuiccPolicy \
@@ -229,7 +226,7 @@ PRODUCT_PACKAGES += \
     ueventd.qcom.rc
 
 # Kernel
- PRODUCT_COPY_FILES += \
+PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/system_dlkm.modules.blocklist:$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules/system_dlkm.modules.blocklist
 
 # Keylayout
@@ -297,6 +294,14 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     android.hardware.nfc-service.st
+
+# NFC is market dependent: global/EEA/JPN/TUR units ship the ST21 or ST54J chip,
+# Indian (IND) units ship without it. Stock frogger nevertheless ships a single
+# vendor image with these permissions in the shared vendor permission dir and
+# gates NFC in the UI through the nothing-fwk feature bits in sku/build_*.prop,
+# so the permissions stay where stock has them. init.frogger.nfc.sh only sets
+# vendor.nfc.config_file_name / vendor.nfc_model when the chip answers on i2c
+# (1-0008), so an IND unit never hands the HAL a config to open.
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
