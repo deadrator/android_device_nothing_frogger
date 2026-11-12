@@ -1,0 +1,12 @@
+# AOSP/Lineage sources must keep LF endings — CRLF breaks make and init
+* text=auto eol=lf
+
+# Binaries: never touch
+*.img binary
+*.dtb binary
+*.dtbo binary
+*.so binary
+*.apk binary
+*.jar binary
+*.7z binary
+*.zip binary
