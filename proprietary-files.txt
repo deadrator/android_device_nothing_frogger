@@ -1206,8 +1206,10 @@ vendor/etc/pwr/VideoPowerOptFeature.xml
 vendor/etc/seccomp_policy/qesdksec.policy
 vendor/etc/vintf/manifest/vendor.qti.hardware.limits-service.xml
 vendor/etc/vintf/manifest/vendor.qti.hardware.power.powermodule.xml
+vendor/lib64/libapengine.so
 vendor/lib64/libgamepoweroptfeature.so
 vendor/lib64/liblmthermallistner.so
+vendor/lib64/liblearningmodule.so
 vendor/lib64/liboffscreenpoweroptfeature.so
 vendor/lib64/libpowercore.so
 vendor/lib64/libq-perflog.so
@@ -1708,3 +1710,4 @@ vendor/etc/wifi/wpa_supplicant_overlay.conf
 
 # Widevine
 vendor/apex/com.google.android.widevine.nonupdatable.apex
+vendor/lib64/libwa_sat.so
